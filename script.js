@@ -1,3 +1,2 @@
-alert("Hello World this is my first project
-    I am Junyeong Lee
+alert("Hello World this is my first projec,I am Junyeong Lee
     ");
