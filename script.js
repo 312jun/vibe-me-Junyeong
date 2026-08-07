@@ -3,6 +3,8 @@ const emailBtn = document.getElementById("emailBtn");
 const contactModal = document.getElementById("contactModal");
 const emailModal = document.getElementById("emailModal");
 const title = document.querySelector("h1");
+const themeToggle = document.getElementById("themeToggle");
+const root = document.documentElement;
 
 function openModal(modal) {
     modal?.classList.add("is-open");
@@ -13,6 +15,29 @@ function closeModal(modal) {
     modal?.classList.remove("is-open");
     modal?.setAttribute("aria-hidden", "true");
 }
+
+function setTheme(theme) {
+    if (theme === "dark") {
+        root.setAttribute("data-theme", "dark");
+    } else {
+        root.removeAttribute("data-theme");
+    }
+    localStorage.setItem("theme", theme);
+    themeToggle?.setAttribute(
+        "aria-label",
+        theme === "dark" ? "라이트모드로 전환" : "다크모드로 전환"
+    );
+}
+
+/* 저장된 테마 또는 시스템 설정으로 초기화 */
+const savedTheme = localStorage.getItem("theme");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+setTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+themeToggle?.addEventListener("click", () => {
+    const isDark = root.getAttribute("data-theme") === "dark";
+    setTheme(isDark ? "light" : "dark");
+});
 
 /* 연락처 보기 → 모달 열기 + 이름을 반갑습니다로 바꾸기 */
 contactBtn?.addEventListener("click", () => {
