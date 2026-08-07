@@ -7,38 +7,44 @@
     padding: 0;
 }
 
-/* 브랜드·텍스트 색을 변수로 모아 두고 var()로 재사용한다 */
+/* 브랜드·텍스트 색을 흑백 변수로 모아 두고 var()로 재사용한다 */
 :root {
-    --brand: #6C5CE7;
-    --brand-hover: #5a4bd1;
-    --brand-soft: rgba(108, 92, 231, 0.16);
-    --text: #222222;
-    --text-muted: #888888;
-    --bg-page: #f3f2f8;
+    --brand: #111111;
+    --brand-hover: #333333;
+    --brand-soft: rgba(0, 0, 0, 0.08);
+    --text: #111111;
+    --text-muted: #777777;
+    --bg-page: #efefef;
     --bg-card: #ffffff;
-    --shadow: 0 2px 6px rgba(108, 92, 231, 0.08),
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.06),
               0 12px 28px rgba(0, 0, 0, 0.1),
               0 28px 48px rgba(0, 0, 0, 0.06);
-    --modal-dim: rgba(0, 0, 0, 0.5);
-    --toggle-bg: #ffffff;
-    --toggle-icon: #5a4bd1;
+    --modal-dim: rgba(0, 0, 0, 0.45);
+    --toggle-bg: #f4f4f4;
+    --toggle-border: #dddddd;
+    --toggle-icon: #111111;
+    --btn-text: #ffffff;
+    --avatar-border: #222222;
 }
 
-/* 다크모드 색 변수 */
+/* 다크모드 흑백 색 변수 */
 [data-theme="dark"] {
-    --brand: #8b7cf0;
-    --brand-hover: #a599ff;
-    --brand-soft: rgba(139, 124, 240, 0.22);
-    --text: #f2f2f7;
-    --text-muted: #a0a0b2;
-    --bg-page: #12131a;
-    --bg-card: #1c1d27;
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.35),
-              0 16px 40px rgba(0, 0, 0, 0.45),
-              0 0 0 1px rgba(255, 255, 255, 0.04);
+    --brand: #f5f5f5;
+    --brand-hover: #ffffff;
+    --brand-soft: rgba(255, 255, 255, 0.1);
+    --text: #f5f5f5;
+    --text-muted: #a8a8a8;
+    --bg-page: #0a0a0a;
+    --bg-card: #161616;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.45),
+              0 16px 40px rgba(0, 0, 0, 0.55),
+              0 0 0 1px rgba(255, 255, 255, 0.06);
     --modal-dim: rgba(0, 0, 0, 0.72);
-    --toggle-bg: #1c1d27;
-    --toggle-icon: #cfc7ff;
+    --toggle-bg: #222222;
+    --toggle-border: #333333;
+    --toggle-icon: #f5f5f5;
+    --btn-text: #111111;
+    --avatar-border: #f5f5f5;
 }
 
 /* 페이지 기본 배경과 글자색을 잡는다 */
@@ -110,23 +116,22 @@ body {
     }
 }
 
-/* 다크모드 토글 버튼 */
+/* 다크모드 토글 버튼: 카드 우측 상단 안에 배치 */
 .theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 50;
-    width: 46px;
-    height: 46px;
-    border: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 5;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--toggle-border);
     border-radius: 50%;
     background: var(--toggle-bg);
     color: var(--toggle-icon);
-    box-shadow: var(--shadow);
     cursor: pointer;
     display: grid;
     place-items: center;
-    transition: transform 0.25s ease, background 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
+    transition: transform 0.25s ease, background 0.45s ease, color 0.45s ease, border-color 0.45s ease;
 }
 
 .theme-toggle:hover {
@@ -156,10 +161,11 @@ body {
 
 /* 명함 카드: 흰 배경, 여백, 둥근 모서리, 은은한 그림자 */
 .card {
+    position: relative;
     width: 100%;
     max-width: 420px;
     background: var(--bg-card);
-    padding: 40px 32px;
+    padding: 48px 32px 40px;
     border-radius: 24px;
     box-shadow: var(--shadow);
     animation:
@@ -189,8 +195,9 @@ header {
     object-fit: cover;
     border-radius: 50%;
     display: block;
-    border: 3px solid #5B8DEF;
+    border: 3px solid var(--avatar-border);
     box-sizing: border-box;
+    filter: grayscale(1);
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     animation: avatar-glow 2.8s ease-in-out infinite;
 }
@@ -226,6 +233,7 @@ h1 {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+    filter: grayscale(1);
     transition: transform 0.3s ease;
 }
 
@@ -288,17 +296,17 @@ h1 {
     animation: rise 0.6s ease 0.52s both;
 }
 
-/* 연락처 버튼: 브랜드색 배경의 기본 버튼 모양 */
+/* 연락처 버튼: 흑백 배경의 기본 버튼 모양 */
 .btn {
     padding: 10px 22px;
     border: none;
     border-radius: 999px;
     background: var(--brand);
-    color: #ffffff;
+    color: var(--btn-text);
     font-family: inherit;
     font-size: 14px;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 /* 버튼 호버 시 색·그림자·위치를 살짝 바꾼다 */
@@ -372,11 +380,11 @@ footer {
     border: none;
     border-radius: 999px;
     background: var(--brand);
-    color: #ffffff;
+    color: var(--btn-text);
     font-family: inherit;
     font-size: 14px;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .modal__close:hover {
