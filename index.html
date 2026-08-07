@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <link rel="stylesheet" href="style.css"/>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://kit.fontawesome.com/15338c55b6.js" crossorigin="anonymous"></script>
     <title>이준영입니다.</title>
 </head>
 <body>
+    <div class="modal" id="contactModal" aria-hidden="true">
+        <div class="modal__box">
+            <h2>연락처</h2>
+            <p>010-2426-6337</p>
+            <button type="button" class="modal__close">닫기</button>
+        </div>
+    </div>
+
+    <div class="modal" id="emailModal" aria-hidden="true">
+        <div class="modal__box">
+            <h2>이메일</h2>
+            <p>312jun@naver.com</p>
+            <button type="button" class="modal__close">닫기</button>
+        </div>
+    </div>
+
+    <main class="card">
+        <header>
+            <img class="avatar" src="junyeong.png.png" alt="이준영 프로필 사진"/>
+            <h1>이준영</h1>
+            <p class="role">
+                <img class="uni-mark" src="dongguk-mark.svg" alt="동국대학교 마크" width="18" height="18"/>
+                동국대, 에너지신소재 공학과
+            </p>
+        </header>
+
+        <section class="bio">
+            <p>불편함을 서비스로 바꾸는 것을 좋아합니다!</p>
+        </section>
+
+        <nav class="links">
+            <a href="https://github.com/312jun" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+            </a>
+            <a href="https://instagram.com/junyeong__312" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram
+            </a>
+        </nav>
+
+        <div class="actions">
+            <button class="btn" id="contactBtn" type="button">연락처 보기</button>
+            <button class="btn" id="emailBtn" type="button">이메일 보기</button>
+        </div>
+
+        <footer>2026 Junyeong Lee</footer>
+    </main>
+
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
