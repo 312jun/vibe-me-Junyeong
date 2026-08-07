@@ -61,6 +61,8 @@ body {
    animation: card-in 0.7s ease both; /* 페이지 진입 시 부드러운 등장 */
    display: flex; /* 카드 안 블록을 세로로 쌓는다 */
    flex-direction: column;
+   align-items: center; /* 카드 안 요소 가로 중앙 정렬 */
+   text-align: center; /* 글자 중앙 정렬 */
    gap: 20px; /* 헤더·소개·링크·버튼·푸터 사이 간격 */
 }
 
@@ -68,6 +70,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
+    align-items: center; /* 사진·이름·역할 중앙 정렬 */
     gap: 10px; /* 사진·이름·역할 사이 간격 */
 }
 
@@ -87,12 +90,14 @@ h1 {
     font-size: 30px;
     font-weight: 700;
     color: var(--text);
+    text-align: center;
 }
 
 /* 역할(.role) 글자 위계: 14px, 흐린 색 */
 .role {
     display: flex;
     align-items: center;
+    justify-content: center; /* 마크+역할 텍스트 중앙 정렬 */
     gap: 6px;
     font-size: 14px;
     color: var(--text-muted);
@@ -110,6 +115,7 @@ h1 {
     font-size: 15px;
     line-height: 1.6;
     color: var(--text);
+    text-align: center;
 }
 
 /* 링크들을 한 줄로 나란히 배치한다 */
@@ -164,6 +170,7 @@ h1 {
 footer {
     font-size: 12px;
     color: var(--text-muted);
+    text-align: center;
 }
 
 
