@@ -1,0 +1,15 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dongguk University mark">
+  <circle cx="32" cy="32" r="30" fill="#F3982D"/>
+  <g fill="#ffffff" transform="translate(32 32)">
+    <rect x="-2" y="-26" width="4" height="10" rx="2"/>
+    <rect x="-2" y="16" width="4" height="10" rx="2"/>
+    <rect x="-26" y="-2" width="10" height="4" rx="2"/>
+    <rect x="16" y="-2" width="10" height="4" rx="2"/>
+    <rect x="-2" y="-26" width="4" height="10" rx="2" transform="rotate(45)"/>
+    <rect x="-2" y="-26" width="4" height="10" rx="2" transform="rotate(135)"/>
+    <rect x="-2" y="-26" width="4" height="10" rx="2" transform="rotate(225)"/>
+    <rect x="-2" y="-26" width="4" height="10" rx="2" transform="rotate(315)"/>
+  </g>
+  <circle cx="32" cy="32" r="14" fill="#F3982D"/>
+  <path fill="#ffffff" d="M26 22h8.5c6.2 0 10.5 3.8 10.5 10s-4.3 10-10.5 10H26V22zm4.2 3.6v12.8h4.2c3.8 0 6.2-2.2 6.2-6.4s-2.4-6.4-6.2-6.4h-4.2z"/>
+</svg>
