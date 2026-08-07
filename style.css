@@ -1,3 +1,227 @@
-body{
-    background:#2d1167
+/* 모든 요소의 박스 모델·여백을 초기화한다 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 브랜드·텍스트 색을 변수로 모아 두고 var()로 재사용한다 */
+:root {
+    --brand: #6C5CE7;
+    --brand-hover: #5a4bd1;
+    --text: #222222;
+    --text-muted: #888888;
+    --bg-page: #f3f2f8;
+    --bg-card: #ffffff;
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* 페이지 기본 배경과 글자색을 잡는다 */
+body {
+    background: var(--bg-page);
+    color: var(--text);
+    min-height: 100vh; /* 화면 높이만큼 영역을 확보해 세로 중앙 정렬이 되게 한다 */
+    display: flex; /* 카드를 Flex로 배치할 수 있게 한다 */
+    justify-content: center; /* 카드를 가로 정중앙에 둔다 */
+    align-items: center; /* 카드를 세로 정중앙에 둔다 */
+}
+
+/* 글자를 드래그했을 때 브랜드색으로 선택 영역을 표시한다 */
+::selection {
+    background: var(--brand);
+    color: #ffffff;
+}
+
+/* 카드가 아래에서 부드럽게 떠오르며 등장한다 */
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 명함 카드: 흰 배경, 여백, 둥근 모서리, 은은한 그림자 */
+.card {
+   width: 100%; 
+   max-width: 420px;
+   background:  #ffffff;
+   padding: 40px 32px;
+   border-radius: 24px;
+   /* 명함 뒷면이 살짝 떠 있는 듯한 그림자 */
+   box-shadow:
+      0 2px 6px rgba(108, 92, 231, 0.08),
+      0 12px 28px rgba(0, 0, 0, 0.1),
+      0 28px 48px rgba(0, 0, 0, 0.06);
+   animation: card-in 0.7s ease both; /* 페이지 진입 시 부드러운 등장 */
+   display: flex; /* 카드 안 블록을 세로로 쌓는다 */
+   flex-direction: column;
+   gap: 20px; /* 헤더·소개·링크·버튼·푸터 사이 간격 */
+}
+
+/* 이름·역할 등 헤더 안 문장 간격을 띄운다 */
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 사진·이름·역할 사이 간격 */
+}
+
+/* 프로필 사진을 원형으로 자른다 */
+.avatar {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 50%; /* 원형 프로필 */
+    display: block;
+    border: 3px solid #5B8DEF; /* 브랜드 보라와 어울리는 파란색 테두리 */
+    box-sizing: border-box;
+}
+
+/* 이름(h1) 글자 위계: 30px / 굵기 700 */
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* 역할(.role) 글자 위계: 14px, 흐린 색 */
+.role {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* 동국대 마크를 역할 텍스트 옆에 작게 배치한다 */
+.uni-mark {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* 소개(.bio) 글자 위계: 15px, 줄간격 1.6 */
+.bio {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* 링크들을 한 줄로 나란히 배치한다 */
+.links {
+    display: flex; /* 링크를 가로로 늘어놓는다 */
+    justify-content: center; /* 링크 묶음을 가운데 정렬한다 */
+    gap: 20px; /* 링크 사이 간격을 gap으로 둔다 */
+}
+
+/* 링크 글자색을 브랜드색으로 맞추고 밑줄을 제거한다 */
+.links a {
+    color: var(--brand);
+    text-decoration: none; /* 링크 밑줄 제거 */
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+/* 링크에 마우스를 올리면 조금 더 진한 브랜드색으로 바꾼다 */
+.links a:hover {
+    color: var(--brand-hover); /* hover 색 변화 */
+    text-decoration: none; /* hover에서도 밑줄 없음 */
+}
+
+/* 연락처·이메일 버튼을 한 줄로 나란히 둔다 */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* 연락처 버튼: 브랜드색 배경의 기본 버튼 모양 */
+.btn {
+   padding: 10px 22px;
+   border: none;
+   border-radius: 999px;
+   background: var(--brand);
+   color: #ffffff;
+   font-family: inherit; /* 버튼 글꼴을 페이지와 같게 상속 */
+   font-size: 14px;
+   cursor: pointer;
+   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+/* 버튼 호버 시 색·그림자·위치를 살짝 바꾼다 */
+.btn:hover {
+   background: var(--brand-hover); /* hover 색 변화 */
+   transform: translateY(-2px);
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* 푸터는 작고 흐린 글씨로 보조 정보를 표시한다 */
+footer {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+
+/* 모달: 투명도로 열고 닫아 부드럽게 전환한다 */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal__box {
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 20px;
+    text-align: center;
+    transform: translateY(16px) scale(0.96);
+    transition: transform 0.3s ease;
+}
+
+.modal.is-open .modal__box {
+    transform: translateY(0) scale(1);
+}
+
+.modal__box h2 {
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.modal__box p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.modal__close {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 999px;
+    background: var(--brand);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.modal__close:hover {
+    background: var(--brand-hover);
 }
